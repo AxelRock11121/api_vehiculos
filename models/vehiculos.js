@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
-const vehiculos=sequelize.define('vehiculos',{
+const vehiculo=sequelize.define('Vehiculo',{
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -19,10 +19,6 @@ const vehiculos=sequelize.define('vehiculos',{
         type:DataTypes.STRING,
         allowNull:false
       },
-      fecha_registro:{
-        type:DataTypes.DATE,
-        allowNull:false
-      },
       edr_id:{
         type:DataTypes.INTEGER,
         allowNull:false,
@@ -31,15 +27,14 @@ const vehiculos=sequelize.define('vehiculos',{
             key:'Id'
         }
       },
-      fecha_mod:{
-        type:DataTypes.DATE,
-        allowNull:true
-      },
       caracteristicas_adicionales:{
         type:DataTypes.STRING,
         allowNull:true
-      },
-      tableName: 'Vehiculos', // Nombre de la tabla en la base de datos
-        timestamps: true,
-});
-module.exports=vehiculos;
+      }      
+},
+{
+  tableName:'VEHICULOS',
+  timestamps:false
+}
+);
+module.exports=vehiculo;

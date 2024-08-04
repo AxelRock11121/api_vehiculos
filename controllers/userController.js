@@ -5,7 +5,7 @@ const sequelize = require('../config/database');
 const jwt = require('jsonwebtoken');
 
 
-const JWT_SECRET = 'your_secret_key';
+const JWT_SECRET = '1234';
 
 // exports.register = async (req, res) => {
 //     const { username, password } = req.body;
@@ -36,7 +36,7 @@ const login = async (req, res) => {
           const record = result[0];
           if (record.success == true) {
             console.log(record.message); // Login Successful
-            const token = jwt.sign({ username: username }, JWT_SECRET, { expiresIn: '1h' });
+            const token = jwt.sign({ username: username }, JWT_SECRET, { expiresIn: '2h' });
             res.send({ token });
             // return { success: true, userId: record.UserId };
           } else {
