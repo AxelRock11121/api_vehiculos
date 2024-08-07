@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
+const estatusvehiculo = require('../models/EstatusVehiculo');
 
 const vehiculo=sequelize.define('Vehiculo',{
     id: {
@@ -19,22 +20,29 @@ const vehiculo=sequelize.define('Vehiculo',{
         type:DataTypes.STRING,
         allowNull:false
       },
-      edr_id:{
+      placa:{
+        type:DataTypes.STRING,
+        allowNull:false
+      },
+      año:{
+        type:DataTypes.INTEGER,
+        allowNull:false
+      },
+      ev_id:{
         type:DataTypes.INTEGER,
         allowNull:false,
         references:{
-            model:'Estatus_registro',
+            model:'Estatus_vehiculo',
             key:'Id'
         }
-      },
-      caracteristicas_adicionales:{
-        type:DataTypes.STRING,
-        allowNull:true
-      }      
+      }     
 },
 {
   tableName:'VEHICULOS',
   timestamps:false
 }
 );
+
+vehiculo.belongsTo(estatusvehiculo, { foreignKey: 'ev_id' });
+
 module.exports=vehiculo;
